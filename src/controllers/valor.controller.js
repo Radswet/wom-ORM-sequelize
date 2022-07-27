@@ -2,9 +2,9 @@ import { Valor } from "../models/Valor.js";
 
 export async function createValor(req, res) {
   try {
-    const { Valor } = req.body;
+    const { Valor, IDInput } = req.body;
     const newValor = await Valor.create({
-      Valor,
+      Valor, IDInput,
     });
     res.json(newValor);
   } catch (error) {
@@ -15,7 +15,7 @@ export async function createValor(req, res) {
 export async function getValores(req, res) {
   try {
     const valor = await Valor.findAll({
-      attributes: ["ID", "Valor"],
+      attributes: ["ID", "Valor" ,"IDInput"],
       order: [["ID", "ASC"]],
     });
     res.json(valor);
@@ -28,7 +28,7 @@ export async function updateValor(req, res) {
   const { id } = req.params;
   try {
     const valor = await Valor.findOne({
-      attributes: ["ID", "Valor"],
+      attributes: ["ID", "Valor", "IDInput"],
       where: { id },
     });
 
@@ -60,7 +60,7 @@ export async function getValor(req, res) {
   try {
     const valor = await Valor.findOne({
       where: { id },
-      attributes: ["ID", "Valor"],
+      attributes: ["ID", "Valor", "IDInput"],
     });
     res.json(valor);
   } catch (error) {

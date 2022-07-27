@@ -2,8 +2,10 @@ import { Especial } from "../models/Especial.js";
 
 export async function createEspecial(req, res) {
   try {
-    const { Tipo, Nombre, Consulta } = req.body;
+    const { IDTemplate, IDSeccion, Tipo, Nombre, Consulta } = req.body;
     const newEspecial = await Especial.create({
+      IDTemplate,
+      IDSeccion,
       Tipo,
       Nombre,
       Consulta,
@@ -17,7 +19,7 @@ export async function createEspecial(req, res) {
 export async function getEspeciales(req, res) {
   try {
     const especial = await Especial.findAll({
-      attributes: ["ID", "IDTemplate", "Tipo", "Nombre", "Consulta"],
+      attributes: ["ID", "IDTemplate", "IDSeccion", "Tipo", "Nombre", "Consulta"],
       order: [["ID", "ASC"]],
     });
     res.json(especial);
@@ -30,7 +32,7 @@ export async function updateEspecial(req, res) {
   const { id } = req.params;
   try {
     const especial = await Especial.findOne({
-      attributes: ["ID", "IDTemplate", "Tipo", "Nombre", "Consulta"],
+      attributes: ["ID", "IDTemplate", "IDSeccion", "Tipo", "Nombre", "Consulta"],
       where: { id },
     });
 
@@ -62,7 +64,7 @@ export async function getEspecial(req, res) {
   try {
     const especial = await Especial.findOne({
       where: { id },
-      attributes: ["ID", "IDTemplate", "Tipo", "Nombre", "Consulta"],
+      attributes: ["ID", "IDTemplate", "IDSeccion","Tipo", "Nombre", "Consulta"],
     });
     res.json(especial);
   } catch (error) {

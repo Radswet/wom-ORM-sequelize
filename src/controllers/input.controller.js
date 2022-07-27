@@ -2,9 +2,9 @@ import { Input } from "../models/Input.js";
 
 export async function createInput(req, res) {
   try {
-    const { Name } = req.body;
+    const { Nombre , Tipo , Mandatorio, IDTemplate, IDSeccion } = req.body;
     const newInput = await Input.create({
-      Name,
+      Nombre, Tipo, Mandatorio, IDTemplate, IDSeccion 
     });
     res.json(newInput);
   } catch (error) {
@@ -15,7 +15,7 @@ export async function createInput(req, res) {
 export async function getInputs(req, res) {
   try {
     const input = await Input.findAll({
-      attributes: ["ID", "Nombre", "Tipo", "Mandatorio"],
+      attributes: ["ID", "Nombre", "Tipo", "Mandatorio","IDTemplate","IDSeccion"],
       order: [["ID", "ASC"]],
     });
     res.json(input);

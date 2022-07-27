@@ -1,0 +1,32 @@
+@route = http://localhost:3000/especial
+
+### get tasks
+GET {{route}}
+
+### create task
+POST {{route}}
+Content-Type: application/json
+
+{   
+    "IDTemplate": 1,
+    "IDSeccion": 1,
+    "Tipo": "csv",
+    "Nombre": "sitio",
+    "Consulta": "NetworkElement.csv"
+}
+
+### get task
+GET {{route}}/1
+
+### delete task
+DELETE {{route}}/1
+
+### update task
+PUT {{route}}/1
+Content-Type: application/json
+
+{
+    "Tipo": "xlsx",
+    "Nombre": "sitio 2",
+    "Consulta": "NetworkElement_2.csv"
+}

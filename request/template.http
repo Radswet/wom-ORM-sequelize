@@ -1,0 +1,28 @@
+@route = http://localhost:3000/template
+
+### get tasks
+GET {{route}}
+
+### create task
+POST {{route}}
+Content-Type: application/json
+
+{
+    "Name": "call out"
+}
+
+### get task
+GET {{route}}/1
+
+### delete task
+DELETE {{route}}/1
+
+### update task
+PUT {{route}}/2
+Content-Type: application/json
+
+{
+  
+    "Name": "call out update"
+    
+}

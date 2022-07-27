@@ -1,0 +1,27 @@
+@route = http://localhost:3000/valor
+
+### get tasks
+GET {{route}}
+
+### create task
+POST {{route}}
+Content-Type: application/json
+
+{
+    "Valor": "opcion 1"
+}
+
+### get task
+GET {{route}}/1
+
+### delete task
+DELETE {{route}}/1
+
+### update task
+PUT {{route}}/1
+Content-Type: application/json
+
+{
+    "IDInput": 1,
+    "Valor": "Opcion 2"   
+}

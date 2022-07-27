@@ -1,0 +1,32 @@
+@route = http://localhost:3000/input
+
+### get tasks
+GET {{route}}
+
+### create task
+POST {{route}}
+Content-Type: application/json
+
+{
+    "Nombre": "rango",
+    "Tipo": "TEXT",
+    "Mandatorio": 1,
+    "IDTemplate": 1,
+    "IDSeccion": 1
+}
+
+### get task
+GET {{route}}/1
+
+### delete task
+DELETE {{route}}/1
+
+### update task
+PUT {{route}}/2
+Content-Type: application/json
+
+{  
+    "Nombre": "rango",
+    "Tipo": "TEXT",
+    "Mandatorio": 1,   
+}

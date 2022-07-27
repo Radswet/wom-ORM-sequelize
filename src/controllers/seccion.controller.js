@@ -2,9 +2,9 @@ import { Seccion } from "../models/Seccion.js";
 
 export async function createSeccion(req, res) {
   try {
-    const { Nombre, Min, Max } = req.body;
+    const { IDPadre, IDTemplate, Nombre, Min, Max } = req.body;
     const newSeccion = await Seccion.create({
-      Nombre, Min, Max
+      IDPadre, IDTemplate, Nombre, Min, Max
     });
     res.json(newSeccion);
   } catch (error) {
@@ -15,7 +15,7 @@ export async function createSeccion(req, res) {
 export async function getSecciones(req, res) {
   try {
     const seccion = await Seccion.findAll({
-      attributes: ["ID","IDPadre" ,"Name", "Min", "Max"],
+      attributes: ["ID","IDPadre", "IDTemplate","Nombre", "Min", "Max"],
       order: [["ID", "ASC"]],
     });
     res.json(seccion);
@@ -28,7 +28,7 @@ export async function updateSeccion(req, res) {
   const { id } = req.params;
   try {
     const seccion = await Seccion.findOne({
-      attributes: ["ID", "Name", "Min", "Max"],
+      attributes: [ "IDPadre", "IDTemplate", "Nombre", "Min", "Max"],
       where: { id },
     });
 
@@ -60,7 +60,7 @@ export async function getSeccion(req, res) {
   try {
     const seccion = await Seccion.findOne({
       where: { id },
-      attributes: ["ID", "Name"],
+      attributes: ["ID", "IDPadre", "IDTemplate","Nombre", "Min", "Max"],
     });
     res.json(seccion);
   } catch (error) {
